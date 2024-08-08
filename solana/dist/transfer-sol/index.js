@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.transferSol = void 0;
 const web3_js_1 = require("@solana/web3.js");
-const show_balance_1 = require("../show-balance");
 const transferSol = (from, to, amount) => __awaiter(void 0, void 0, void 0, function* () {
     // Creating a connection to the localhost:8899
     const connection = new web3_js_1.Connection((0, web3_js_1.clusterApiUrl)('devnet'), "confirmed");
@@ -35,16 +34,16 @@ const secret = Uint8Array.from([32, 199, 150, 50, 229, 167, 138, 211, 158, 181, 
 const fromKeyPair = web3_js_1.Keypair.fromSecretKey(secret);
 // Account 2 (receives the SOL)
 const topublicKey = new web3_js_1.PublicKey("J2BkNs4cGqh7PAFgTjncMi9FVoiFwzpEuu1yc5H73Mp4");
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    // await airdrop(fromKeyPair.publicKey, 1);
-    const initialBalance = yield (0, show_balance_1.showBalance)(fromKeyPair.publicKey);
-    console.log(`Initial balance of FROM wallet is ${initialBalance}`);
-    const initialBalanceTo = yield (0, show_balance_1.showBalance)(topublicKey);
-    console.log(`Initial balance of TO wallet is ${initialBalanceTo}`);
-    yield (0, exports.transferSol)(fromKeyPair, topublicKey, 1);
-    const initialBalance2 = yield (0, show_balance_1.showBalance)(fromKeyPair.publicKey);
-    console.log(`Post transfer balance of FROM wallet is ${initialBalance2}`);
-    const initialBalanceTo2 = yield (0, show_balance_1.showBalance)(topublicKey);
-    console.log(`Post transfer balance of TO wallet is ${initialBalanceTo2}`);
-}))();
+// (async() => {
+//     // await airdrop(fromKeyPair.publicKey, 1);
+//     const initialBalance = await showBalance(fromKeyPair.publicKey);
+//     console.log(`Initial balance of FROM wallet is ${initialBalance}`);
+//     const initialBalanceTo = await showBalance(topublicKey);
+//     console.log(`Initial balance of TO wallet is ${initialBalanceTo}`);
+//     await transferSol(fromKeyPair, topublicKey, 1);
+//     const initialBalance2 = await showBalance(fromKeyPair.publicKey);
+//     console.log(`Post transfer balance of FROM wallet is ${initialBalance2}`);
+//     const initialBalanceTo2 = await showBalance(topublicKey);
+//     console.log(`Post transfer balance of TO wallet is ${initialBalanceTo2}`);
+// })()
 //# sourceMappingURL=index.js.map
